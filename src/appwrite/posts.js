@@ -1,11 +1,13 @@
 import config from "../config";
-import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { Client, Databases, Storage, Query } from "appwrite";
 
 export class PostsService {
 	client = new Client();
 	databases;
 	constructor() {
-		this.client.setEndpoint(config.appwriteUrl).setProject(config.project);
+		this.client
+			.setEndpoint(config.appwriteUrl)
+			.setProject(config.appwriteProjectId);
 		this.databases = new Databases(this.client);
 		this.bucket = new Storage(this.client);
 	}
